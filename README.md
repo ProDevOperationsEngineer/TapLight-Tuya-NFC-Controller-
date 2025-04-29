@@ -5,7 +5,7 @@ TapLight is an NFC-based smart lighting controller that allows you to toggle and
 Built around the Deltaco SH-LE27RGB but adaptable to other Tuya-compatible devices.
 
 
-![Communication Flow](static/images/intro.png)
+![Communication Flow](intro.png)
 
 
 Project Overview – NFC-Triggered Smart Light Control (Deltaco + Flask)
