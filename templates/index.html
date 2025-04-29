@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Smart Light Control</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='semantic.css') }}">
+    <style>
+        body {
+            background-color:rgb(206, 206, 206);
+        }
+        .intro-text {
+            font-family: 'Georgia', 'Cursive', serif;
+            font-size: 3em;
+            margin-top: 3rem;
+            text-align: center;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="ui container">
+        <p class="intro-text">
+            Welcome to my Smart Light Control project — powered by Flask, NFC and Python
+        </p>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div class="ui container" style="margin-top: 10vh; text-align: center;">
+        <a href="{{ url_for('history') }}" class="ui huge blue button rounded">
+            HISTORY
+        </a>
+    </div>
+
+    <script src="{{ url_for('static', filename='semantic.js') }}"></script>
+</body>
+</html>

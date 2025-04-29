@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>History Log</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='semantic.css') }}">
+    <style>
+        body {
+            background-color: rgb(206, 206, 206);
+        }
+    </style>
+</head>
+<body>
+    <!-- MODAL -->
+    <div class="ui mini modal" id="confirmDeleteModal" style="background-color: #2d2d2d; color: white;">
+        <div class="header" style="background-color: #2d2d2d; color: white; border-bottom: 1px solid #444;">
+            Delete History
+        </div>
+        <div class="content" style="background-color: #2d2d2d; color: white;">
+            <p>This will permanently erase all history logs. Are you sure?</p>
+        </div>
+        <div class="actions" style="background-color: #2d2d2d; border-top: 1px solid #444;">
+            <div class="ui cancel inverted button">Cancel</div>
+            <div class="ui red inverted button" onclick="document.getElementById('deleteHistoryForm').submit();">Delete</div>
+        </div>
+    </div>
+
+    <!-- MAIN CONTAINER -->
+    <div class="ui container" style="margin-top: 10vh; text-align: center; background-color: rgb(206, 206, 206); padding: 2em; border-radius: 10px;">
+        <h2 class="ui header">Command History</h2>
+
+        <table class="ui celled table" style="background-color: rgb(206, 206, 206);">
+            <thead style="background-color: rgb(206, 206, 206);">
+                <tr>
+                    <th style="background-color: rgb(206, 206, 206);">Timestamp</th>
+                    <th style="background-color: rgb(206, 206, 206);">Device</th>
+                    <th style="background-color: rgb(206, 206, 206);">Command</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in logs %}
+                <tr>
+                    <td>{{ row[0] }}</td>
+                    <td>{{ row[1] }}</td>
+                    <td>{{ row[2] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <a class="ui huge blue button" href="{{ url_for('home') }}">Back to Home</a>
+
+        <!-- DELETE HISTORY FORM -->
+        <form id="deleteHistoryForm" method="POST" action="{{ url_for('delete_history') }}" style="display: inline; margin-left: 20em;">
+            <button class="ui huge red button" type="button" id="openModalButton">Delete History</button>
+        </form>
+    </div>
+
+    <!-- JS SCRIPTS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ url_for('static', filename='semantic.js') }}"></script>
+    <script>
+        // Proper modal init
+        $('#openModalButton').on('click', function () {
+            $('#confirmDeleteModal').modal({
+                closable: false,
+                blurring: true,
+                transition: 'scale'
+            }).modal('show');
+        });
+    </script>
+</body>
+</html>
